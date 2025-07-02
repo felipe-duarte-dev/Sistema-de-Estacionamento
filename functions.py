@@ -16,6 +16,7 @@ def estacionar_carro(dicionario_niveis, niveis_estacionamento):
                 return dicionario_niveis
             
             break
+
         except ValueError:
             print("Nível inválido!")
 
@@ -34,10 +35,11 @@ def estacionar_carro(dicionario_niveis, niveis_estacionamento):
             dicionario_niveis[nivel_estacionar].remove(vaga_estacionar) # Atualiza o dicionário, retirando a vaga ocupada
             print("Operação realizada com sucesso!") 
             return dicionario_niveis # Encerra a operação e retorna o dicionário atualizado com a vaga preenchida
+        
         except ValueError:
             print("Vaga inexistente!")
 
-def retirar_carro(dicionario_niveis):
+def retirar_carro(dicionario_niveis, vagas_nivel):
     # Verifica se o nível é um número inteiro
     while True:
         try:
@@ -52,6 +54,7 @@ def retirar_carro(dicionario_niveis):
                 return dicionario_niveis
             
             break
+        
         except ValueError:
             print("Nível inválido!")
     
@@ -61,16 +64,22 @@ def retirar_carro(dicionario_niveis):
             vaga_retirar = input("Digite o número da vaga (ou 0 para cancelar): ") # Recebe a vaga que o carro está estacionado
             vaga_retirar = int(vaga_retirar)
 
-            if vaga_retirar in dicionario_niveis[nivel_retirar]: # Verifica se a vaga está no dicionário, caso ela esteja significa que a vaga não está ocupada ou não existe
-                print(f"A vaga {vaga_retirar} não está ocupada ou não existe")
-                continue # Reinicia o loop até o usuário digitar uma vaga ocupada
-            elif vaga_retirar == 0: # Cancela a operação
-                print("Operação cancelada!")
-                return dicionario_niveis
-
-            dicionario_niveis[nivel_retirar].append(vaga_retirar) # Adiciona a vaga novamente ao dicionário, listando ela como disponível
-            print("Você ficou no estacionamento entre 20h às 21h \nOperação realizada com sucesso!")
-            return dicionario_niveis # Encerra a operação e retorna o dicionário atualizado
-            
         except ValueError:
-            print("Vaga inexistente!")
+            print("Entrada inválida, digite apenas números!")
+            continue
+
+        if vaga_retirar in dicionario_niveis[nivel_retirar]: # Verifica se a vaga está no dicionário, caso ela esteja significa que a vaga não está ocupada
+            print(f"A vaga {vaga_retirar} não está ocupada!")
+            continue # Reinicia o loop até o usuário digitar uma vaga ocupada
+        elif vaga_retirar not in range(1, vagas_nivel + 1): # Verifica se a vaga está dentro das vagas existentes
+            print(f"A vaga {vaga_retirar} não existe!")
+            continue
+        elif vaga_retirar == 0: # Cancela a operação
+            print("Operação cancelada!")
+            return dicionario_niveis
+
+        dicionario_niveis[nivel_retirar].append(vaga_retirar) # Adiciona a vaga novamente ao dicionário, listando ela como disponível
+        dicionario_niveis[nivel_retirar].sort() # Ordena em ordem crescente as vagas disponíveis
+        print("Você ficou no estacionamento entre 20h às 21h \nOperação realizada com sucesso!")
+        return dicionario_niveis # Encerra a operação e retorna o dicionário atualizado
+            

@@ -45,7 +45,7 @@ while True:
         case 1:
             estacionar_carro(dicionario_niveis, niveis_estacionamento)
         case 2:
-            retirar_carro(dicionario_niveis)  
+            retirar_carro(dicionario_niveis, vagas_nivel)  
         case 3:
             print("Encerrando o sistema...")
             break
