@@ -8,6 +8,7 @@ while True:
         niveis_estacionamento = input("Quantos níveis o estacionamento possui? (mínimo 1): ") # A variável niveis_estacionamento recebe uma string e em seguida converte para um inteiro
         niveis_estacionamento = int(niveis_estacionamento)
         break
+    
     except ValueError:
         print("Número de níveis inválido!")
 
@@ -17,6 +18,7 @@ while True:
         vagas_nivel = input("Quantas vagas por nível? ") # A variável vagas_nivel recebe uma string e em seguida converte para um inteiro
         vagas_nivel = int(vagas_nivel)
         break
+
     except ValueError:
         print("Número de vagas inválido!")
 
@@ -37,15 +39,16 @@ while True:
         # Verifica se é uma opção válida dentre as opções existentes
         if opcao not in [1, 2, 3, 4]:
             print("Opção Inválida")
+
     except ValueError:
         print("Opção Inválida")
 
     # Executa a função associada a opção escolhida pelo usuário
     match opcao:
         case 1:
-            estacionar_carro(dicionario_niveis, niveis_estacionamento)
+            dicionario_niveis = estacionar_carro(dicionario_niveis, niveis_estacionamento) # Atualiza o dicionário de níveis e vagas
         case 2:
-            retirar_carro(dicionario_niveis, vagas_nivel)  
+            dicionario_niveis = retirar_carro(dicionario_niveis, vagas_nivel)  # Atualiza o dicionário de níveis e vagas
         case 3:
             listar_vagas(dicionario_niveis)
         case 4:

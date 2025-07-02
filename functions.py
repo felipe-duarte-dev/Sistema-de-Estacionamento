@@ -90,5 +90,3 @@ def listar_vagas(dicionario_niveis):
 
     for contador in dicionario_niveis: # Lista todas as vagas disponíveis por níveis
         print(f"Nível {contador}: {dicionario_niveis[contador]}")
-    
-    return dicionario_niveis
