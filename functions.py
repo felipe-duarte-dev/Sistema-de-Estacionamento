@@ -39,6 +39,7 @@ def estacionar_carro(dicionario_niveis, niveis_estacionamento):
         except ValueError:
             print("Vaga inexistente!")
 
+# Função para retirar um carro em uma vaga ocupada dos níveis existentes
 def retirar_carro(dicionario_niveis, vagas_nivel):
     # Verifica se o nível é um número inteiro
     while True:
@@ -82,4 +83,12 @@ def retirar_carro(dicionario_niveis, vagas_nivel):
         dicionario_niveis[nivel_retirar].sort() # Ordena em ordem crescente as vagas disponíveis
         print("Você ficou no estacionamento entre 20h às 21h \nOperação realizada com sucesso!")
         return dicionario_niveis # Encerra a operação e retorna o dicionário atualizado
-            
+
+# Função para listar todas as vagas disponíveis nos níveis existentes
+def listar_vagas(dicionario_niveis):
+    print("Vagas disponíveis: ")
+
+    for contador in dicionario_niveis: # Lista todas as vagas disponíveis por níveis
+        print(f"Nível {contador}: {dicionario_niveis[contador]}")
+    
+    return dicionario_niveis

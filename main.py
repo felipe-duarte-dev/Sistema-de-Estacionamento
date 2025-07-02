@@ -1,4 +1,4 @@
-from functions import estacionar_carro, retirar_carro # Importa as funções do arquivo functions
+from functions import estacionar_carro, retirar_carro, listar_vagas # Importa as funções do arquivo functions
 
 print("=== Sistema de Estacionamento XXXX Shopping ===")
 
@@ -27,7 +27,7 @@ nomes_niveis = [niveis for niveis in range(1, niveis_estacionamento + 1)] # Cria
 for nivel in nomes_niveis:
     dicionario_niveis[nivel] = [vagas for vagas in range(1, vagas_nivel + 1)] # Adiciona o número de vagas por nível a cada nível {nível: [vagas]}
 
-print("Opções \n1 - Estacionar carro \n2 - Sair com carro \n3 - Encerrar sistema") # Mostra as opções de funções ao usuário
+print("Opções \n1 - Estacionar carro \n2 - Sair com carro \n3 - Listar vagas disponíveis \n4 - Encerrar sistema") # Mostra as opções de funções ao usuário
 
 while True:
     # Verifica se a opção é um valor inteiro
@@ -35,7 +35,7 @@ while True:
         opcao = input("Escolha uma opção: ")
         opcao = int(opcao)
         # Verifica se é uma opção válida dentre as opções existentes
-        if opcao not in [1, 2, 3]:
+        if opcao not in [1, 2, 3, 4]:
             print("Opção Inválida")
     except ValueError:
         print("Opção Inválida")
@@ -47,5 +47,7 @@ while True:
         case 2:
             retirar_carro(dicionario_niveis, vagas_nivel)  
         case 3:
+            listar_vagas(dicionario_niveis)
+        case 4:
             print("Encerrando o sistema...")
             break
