@@ -7,6 +7,10 @@ while True:
     try:
         niveis_estacionamento = input("Quantos níveis o estacionamento possui? (mínimo 1): ") # A variável niveis_estacionamento recebe uma string e em seguida converte para um inteiro
         niveis_estacionamento = int(niveis_estacionamento)
+
+        if niveis_estacionamento < 1: # Verifica se o número de níveis é positivo
+            print("Número de níveis inválido")
+            continue
         break
     
     except ValueError:
@@ -17,6 +21,10 @@ while True:
     try:
         vagas_nivel = input("Quantas vagas por nível? ") # A variável vagas_nivel recebe uma string e em seguida converte para um inteiro
         vagas_nivel = int(vagas_nivel)
+
+        if vagas_nivel < 1: # Verifica se o número de vagas é positivo
+            print("Número de vagas inválido")
+            continue
         break
 
     except ValueError:
