@@ -5,8 +5,7 @@ print("=== Sistema de Estacionamento XXXX Shopping ===")
 while True:
     # Verifica se a entrada do usuário é um número inteiro
     try:
-        niveis_estacionamento = input("Quantos níveis o estacionamento possui? (mínimo 1): ") # A variável niveis_estacionamento recebe uma string e em seguida converte para um inteiro
-        niveis_estacionamento = int(niveis_estacionamento)
+        niveis_estacionamento = int(input("Quantos níveis o estacionamento possui? (mínimo 1): ")) # A variável niveis_estacionamento recebe um número inteiro
 
         if niveis_estacionamento < 1: # Verifica se o número de níveis é positivo
             print("Número de níveis inválido")
@@ -19,8 +18,7 @@ while True:
 while True:
     # Verifica se a entrada do usuário é um número inteiro
     try:
-        vagas_nivel = input("Quantas vagas por nível? ") # A variável vagas_nivel recebe uma string e em seguida converte para um inteiro
-        vagas_nivel = int(vagas_nivel)
+        vagas_nivel = int(input("Quantas vagas por nível? ")) # A variável vagas_nivel recebe uma string e em seguida converte para um inteiro
 
         if vagas_nivel < 1: # Verifica se o número de vagas é positivo
             print("Número de vagas inválido")
