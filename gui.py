@@ -198,7 +198,10 @@ entry_vaga_estacionar = ctk.CTkEntry(master=tela_estacionar, placeholder_text='E
 entry_vaga_estacionar.place(relx=0.5, rely=0.4, anchor='center')
 
 button_estacionar = ctk.CTkButton(master=tela_estacionar, command=lambda: validar_estacionamento(dicionario_niveis), text='Confirmar', width=200, height=35) # Botão para confirmar estacionamento
-button_estacionar.place(relx=0.5, rely=0.55, anchor='center')
+button_estacionar.place(relx=0.5, rely=0.5, anchor='center')
+
+button_cancelar_estacionar = ctk.CTkButton(master=tela_estacionar, command=lambda: troca_telas(tela_opcoes), text='Cancelar Operação', width=200, height=35)
+button_cancelar_estacionar.place(relx=0.5, rely=0.6, anchor='center') # Botão para cancelar a operação
 
 resultado_estacionar = ctk.CTkLabel(master=tela_estacionar, text='',) # Feedback da validação de estacionamento
 resultado_estacionar.place(relx=0.5, rely=0.05, anchor='center')
@@ -223,8 +226,11 @@ entry_vaga_retirar.place(relx=0.5, rely=0.4, anchor='center')
 button_retirar = ctk.CTkButton(master=tela_retirar, command=lambda: validar_retirada(dicionario_niveis, dicionario_padrao), text='Confirmar', width=200, height=35)
 button_retirar.place(relx=0.5, rely=0.55, anchor='center') # Botão para confirmar e validar retirada
 
+button_cancelar_retirar = ctk.CTkButton(master=tela_retirar, command=lambda: troca_telas(tela_opcoes), text='Cancelar Operação', width=200, height=35)
+button_cancelar_retirar.place(relx=0.5, rely=0.65, anchor='center') # Botão para cancelar operação
+
 resultado_retirar = ctk.CTkLabel(master=tela_retirar, text='') # Feedback da validação de retirada
-resultado_retirar.place(relx=0.5, rely=0.65, anchor='center')
+resultado_retirar.place(relx=0.5, rely=0.75, anchor='center')
 #----------------------------------------------------------------------------------------------------------------
 
 # TELA DE LISTAGEM DE VAGAS DISPONÍVEIS ------------------------------------------------------------------------- 
