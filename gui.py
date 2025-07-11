@@ -1,7 +1,7 @@
 import customtkinter as ctk
 import copy as cp
 
-# CONFIGURAÇÕES INICIAIS ---------------------------------------------------------------------------------
+# CONFIGURAÇÕES INICIAIS ----------------------------------------------------------------------------------
 ctk.set_appearance_mode('system') # Define aparência da janela
 gui = ctk.CTk() # Cria janela principal
 gui.title("Sistema de Estacionamento") # Atribui título a janela principal
@@ -32,7 +32,7 @@ tela_estacionar = ctk.CTkFrame(master=gui) # Cria frame da tela de estacionament
 tela_retirar = ctk.CTkFrame(master=gui) # Cria frame da tela de retirada
 #tela_retirar.pack(padx=20, pady=20, fill='both', expand=True)
 tela_listar = ctk.CTkFrame(master=gui) # Cria frame da tela de listagem de vagas disponíveis
-
+#tela_listar.pack(padx=20, pady=20, fill='both', expand=True)
 tela_encerramento = ctk.CTkFrame(master=gui) # Cria frame da tela de encerramento
 #-----------------------------------------------------------------------------------------------------------
 
@@ -74,6 +74,7 @@ def escolher_opcao(opcao): # Chama a função de troca de tela com base na opç�
     elif opcao == 'opcao_dois':
         troca_telas(tela_retirar)
     elif opcao == 'opcao_tres':
+        vagas_disponiveis(dicionario_niveis)
         troca_telas(tela_listar)
     elif opcao == 'opcao_quatro':
         troca_telas(tela_encerramento)
@@ -114,7 +115,8 @@ def vagas_disponiveis(dicionario_niveis):
     for nivel, vagas in dicionario_niveis.items(): # Formata mensagem de níveis e vagas para exibição na tela do usuário
         vagas_disponiveis_texto += f'Nível {nivel}: {vagas}\n'
 
-    label_vagas_disponiveis.configure(text=vagas_disponiveis_texto,) # Altera a label de vagas disponíveis
+    label_vagas_disponiveis.configure(text=vagas_disponiveis_texto,) # Altera a label de vagas disponíveis para a tela de estacionar
+    label_listagem.configure(text=vagas_disponiveis_texto) # Altera a label de vagas disponíveis para a tela de vagas disponíveis
     return
 #--------------------------------------------------------------------------------------------------------------
 
@@ -221,7 +223,18 @@ button_retirar.place(relx=0.5, rely=0.55, anchor='center') # Botão para confirm
 
 resultado_retirar = ctk.CTkLabel(master=tela_retirar, text='') # Feedback da validação de retirada
 resultado_retirar.place(relx=0.5, rely=0.65, anchor='center')
-#---------------------------------------------------------------------------------------------------------------- 
+#----------------------------------------------------------------------------------------------------------------
+
+# TELA DE LISTAGEM DE VAGAS DISPONÍVEIS ------------------------------------------------------------------------- 
+label_listagem = ctk.CTkLabel(master=tela_listar, text='') # Label com as vagas disponíveis
+label_listagem.place(relx=0.5, rely=0.2, anchor='center')
+
+button_voltar = ctk.CTkButton(master=tela_listar, command=lambda: troca_telas(tela_opcoes), text='Voltar', width=200, height=35)
+button_voltar.place(relx=0.5, rely=0.7, anchor='center') # Botão para retornar a tela de opções
+#----------------------------------------------------------------------------------------------------------------
+
+# TELA DE ENCERRAMENTO ------------------------------------------------------------------------------------------
+
 
 gui.mainloop() # Inicia a janela
 
