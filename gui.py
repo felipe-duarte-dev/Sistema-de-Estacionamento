@@ -17,6 +17,7 @@ def troca_telas(frame_desejado): # O método pack_forget() "apaga" as telas ante
     tela_estacionar.pack_forget()
     tela_retirar.pack_forget()
     tela_listar.pack_forget()
+    tela_encerramento.pack_forget()
 
     frame_desejado.pack(padx=20, pady=20, fill="both", expand=True)
 #----------------------------------------------------------------------------------------------------------
@@ -34,6 +35,7 @@ tela_retirar = ctk.CTkFrame(master=gui) # Cria frame da tela de retirada
 tela_listar = ctk.CTkFrame(master=gui) # Cria frame da tela de listagem de vagas disponíveis
 #tela_listar.pack(padx=20, pady=20, fill='both', expand=True)
 tela_encerramento = ctk.CTkFrame(master=gui) # Cria frame da tela de encerramento
+#tela_encerramento.pack(padx=20, pady=20, fill='both', expand=True)
 #-----------------------------------------------------------------------------------------------------------
 
 # FUNÇÃO PARA VALIDAR NÍVEIS E VAGAS -----------------------------------------------------------------------
@@ -234,7 +236,14 @@ button_voltar.place(relx=0.5, rely=0.7, anchor='center') # Botão para retornar 
 #----------------------------------------------------------------------------------------------------------------
 
 # TELA DE ENCERRAMENTO ------------------------------------------------------------------------------------------
+label_encerramento = ctk.CTkLabel(master=tela_encerramento, text='Desejar encerrar a sessão?') # Label
+label_encerramento.place(relx=0.5, rely=0.2, anchor='center')
 
+button_encerrar = ctk.CTkButton(master=tela_encerramento, command=lambda: troca_telas(tela_inicial), text='Confirmar', width=200, height=50)
+button_encerrar.place(relx=0.25, rely=0.5, anchor='center') # Botão para confirmar encerramento
+
+button_cancelar = ctk.CTkButton(master=tela_encerramento, command=lambda: troca_telas(tela_opcoes), text='Voltar', width=200, height=50)
+button_cancelar.place(relx=0.75, rely=0.5, anchor='center') # Botão para voltar a tela de opções
+#----------------------------------------------------------------------------------------------------------------
 
 gui.mainloop() # Inicia a janela
-
